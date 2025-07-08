@@ -31,8 +31,9 @@ async def on_ready():
 async def on_message(message):
     if message.author == bot.user:
         return
-    else:
-        if message.content.lower().startswith("bonjour") or message.content.lower().startswith("salut"):
-            await message.channel.send(f"Bonjour {message.author.mention} ! Je suis **Orbita**, comment vas-tu ?")
+    if message.content.lower().startswith("bonjour") or message.content.lower().startswith("salut"):
+        await message.channel.send(f"Bonjour {message.author.mention} ! Je suis **Orbita**, comment vas-tu ?")
+    else :
+        await bot.process_commands(message)
 
 bot.run(os.getenv("DISCORD_TOKEN"))
