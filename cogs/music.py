@@ -1,6 +1,13 @@
 import discord
-import discord.opus
-discord.opus.load_opus("/opt/homebrew/lib/libopus.dylib")
+try:
+    import discord.opus
+    discord.opus.load_opus("/opt/homebrew/lib/libopus.dylib")  # Mac par défaut
+except Exception:
+    try:
+        import discord.opus
+        discord.opus.load_opus("/usr/lib/arm-linux-gnueabihf/libopus.so.0")  # Raspberry Pi
+    except Exception:
+        pass  # Ignore si la lib n'est pas trouvée, Discord affichera une erreur explicite
 from discord.ext import commands
 from discord import FFmpegPCMAudio
 import yt_dlp
