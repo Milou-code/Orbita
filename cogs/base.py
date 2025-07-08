@@ -20,7 +20,7 @@ class Base(commands.Cog):
             await ctx.send("GO !")
 
     @commands.hybrid_command(nom="repete", description="Répète le message donné.")
-    async def repeter(self, ctx, *, message: str):
+    async def repete(self, ctx, *, message: str):
         if len(message) > 2000:
             await ctx.reply("Le message est trop long !")
         else:
