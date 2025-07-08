@@ -1,13 +1,13 @@
 from discord.ext import commands
 import discord
 
-class BaseCog(commands.Cog):
+class Base(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.hybrid_command(hidden=True)
     async def hello(self, ctx):
-        await ctx.reply("Hello world ! Mon nom est Orbita.")
+        await ctx.reply("Hello world ! Mon nom est **Orbita**.")
 
     @commands.hybrid_command(nom="decompte", description="Fait un décompte jusqu'au top départ.")
     async def decompte(self, ctx, nombre: int):
@@ -19,7 +19,7 @@ class BaseCog(commands.Cog):
                 await ctx.send(i)
             await ctx.send("GO !")
 
-    @commands.hybrid_command(nom="repeter", description="Répète le message donné.")
+    @commands.hybrid_command(nom="repete", description="Répète le message donné.")
     async def repeter(self, ctx, *, message: str):
         if len(message) > 2000:
             await ctx.reply("Le message est trop long !")
@@ -32,4 +32,4 @@ class BaseCog(commands.Cog):
         await ctx.reply(f"Pong ! Latence : {latency} ms")
 
 async def setup(bot):
-    await bot.add_cog(BaseCog(bot))
+    await bot.add_cog(Base(bot))
