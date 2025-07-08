@@ -31,7 +31,7 @@ class Moderation(commands.Cog):
             await member.ban(reason=reason)
             await ctx.send(f"{member.mention} a été banni pour : {reason} par {ctx.author.mention}")
 
-    @commands.hybrid_command(name="postregelement", description="Envoie le règlement du serveur dans le salon.")
+    @commands.hybrid_command(name="postregelement", description="Envoie le règlement du serveur dans le salon.", hidden=True)
     @commands.has_permissions(administrator=True)
     async def postregelement(self, ctx):
         embed = discord.Embed(
@@ -64,7 +64,7 @@ class Moderation(commands.Cog):
         except Exception:
             pass
 
-    @commands.hybrid_command(name="postreseaux", description="Envoie les liens des réseaux sociaux dans le salon.")
+    @commands.hybrid_command(name="postreseaux", description="Envoie les liens des réseaux sociaux dans le salon.", hidden=True)
     @commands.has_permissions(administrator=True)
     async def postreseaux(self, ctx):
         embed = discord.Embed(
@@ -86,7 +86,7 @@ class Moderation(commands.Cog):
         except Exception:
             pass
 
-    @commands.hybrid_command(name="clear", description="Supprime un certain nombre de messages dans le salon.")
+    @commands.hybrid_command(name="clear", description="Supprime un certain nombre de messages dans le salon.", hidden=True)
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, nombre: int):
         if nombre < 1 or nombre > 100:
